@@ -64,6 +64,7 @@ const App = () => {
         type="button"
         className="translate-btn"
         onClick={() => translate(text, from, to)}
+        disabled={isLoading || !text.trim()}
       >
         Tłumacz
       </button>

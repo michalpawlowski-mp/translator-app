@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { fetchTranslation } from "../services/translationServices";
 
 export const useTranslator = () => {
   const [result, setResult] = useState("");
@@ -6,16 +7,17 @@ export const useTranslator = () => {
   const [error, setError] = useState("");
 
   const translate = async (text: string, from: string, to: string) => {
-    if (!text) return;
+    if (!text.trim()) return;
+
     setIsLoading(true);
+    setError("");
+    setResult("");
+
     try {
-      const res = await fetch(
-        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${from}|${to}`,
-      );
-      const data = await res.json();
-      setResult(data.responseData.translatedText);
-    } catch {
-      setError("Coś poszło nie tak");
+      const translated = await fetchTranslation(text, from, to);
+      setResult(translated);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Coś poszło nie tak");
     } finally {
       setIsLoading(false);
     }
