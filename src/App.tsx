@@ -13,8 +13,29 @@ const App = () => {
     setTo(from);
   };
 
+  const toggleTheme = () => {
+    setIsDark((prev) => {
+      const next = !prev;
+      document.body.classList.toggle("dark", next);
+      localStorage.setItem("theme", next ? "dark" : "light");
+      return next;
+    });
+  };
+
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") document.body.classList.add("dark");
+    return saved === "dark";
+  });
+
   return (
-    <div className="app">
+    <main className="app">
+      <div className="app-header">
+        <h1 className="app-title">Translator</h1>
+        <button type="button" className="theme-btn" onClick={toggleTheme}>
+          {isDark ? "☀️" : "🌙"}
+        </button>
+      </div>
       <div className="controls">
         <select
           title="first language"
@@ -68,7 +89,7 @@ const App = () => {
       >
         Tłumacz
       </button>
-    </div>
+    </main>
   );
 };
 
