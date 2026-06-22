@@ -32,13 +32,20 @@ const App = () => {
     <main className="app">
       <div className="app-header">
         <h1 className="app-title">Translator</h1>
-        <button type="button" className="theme-btn" onClick={toggleTheme}>
+        <button
+          title="Zmiana motywu strony"
+          type="button"
+          className="theme-btn"
+          onClick={toggleTheme}
+          aria-label={isDark ? "Włącz jasny motyw" : "Włącz ciemny motyw"}
+        >
           {isDark ? "☀️" : "🌙"}
         </button>
       </div>
       <div className="controls">
         <select
-          title="first language"
+          aria-label="Język źródłowy"
+          title="Język źródłowy"
           value={from}
           onChange={(e) => setFrom(e.target.value)}
         >
@@ -49,12 +56,19 @@ const App = () => {
           ))}
         </select>
 
-        <button type="button" className="swap-btn" onClick={handleSwap}>
+        <button
+          aria-label="Zamień języki"
+          title="Zamień języki"
+          type="button"
+          className="swap-btn"
+          onClick={handleSwap}
+        >
           ⇄
         </button>
 
         <select
-          title="second language"
+          aria-label="Język docelowy"
+          title="Język docelowy"
           value={to}
           onChange={(e) => setTo(e.target.value)}
         >
@@ -68,6 +82,8 @@ const App = () => {
 
       <div className="textareas">
         <textarea
+          aria-label="Tekst do tłumaczenia"
+          title="Tekst do tłumaczenia"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Wpisz tekst..."
@@ -75,11 +91,17 @@ const App = () => {
         <textarea
           value={isLoading ? "Tłumaczenie..." : result}
           readOnly
+          aria-label="Wynik tłumaczenia"
+          title="Wynik tłumaczenia"
           placeholder="Tłumaczenie..."
         />
       </div>
 
-      {error && <p className="error">{error}</p>}
+      {error && (
+        <p className="error" role="alert">
+          {error}
+        </p>
+      )}
 
       <button
         type="button"
