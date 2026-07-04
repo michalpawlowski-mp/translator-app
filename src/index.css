@@ -48,33 +48,34 @@ body {
 .app {
   position: relative;
   background: var(--bg-card);
-  border-radius: 12px;
+  border-radius: 16px;
   border: 1px solid var(--border);
-  padding: 2.5rem;
+  padding: 3rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 .app-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .app-title {
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 32px;
+  font-weight: 600;
   color: var(--text);
 }
 
 .theme-btn {
-  padding: 6px 10px;
+  padding: 10px 14px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   background: transparent;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 22px;
   transition: background 0.15s;
 }
 
@@ -85,16 +86,16 @@ body {
 .controls {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 1rem;
+  gap: 12px;
+  margin-bottom: 1.5rem;
 }
 
 select {
   flex: 1;
-  padding: 10px 14px;
+  padding: 16px 20px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 18px;
   background: var(--bg-card);
   color: var(--text);
   appearance: none;
@@ -108,13 +109,13 @@ select:focus {
 }
 
 .swap-btn {
-  padding: 10px 16px;
+  padding: 16px 20px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
-  font-size: 18px;
+  font-size: 22px;
   transition: background 0.15s;
 }
 
@@ -125,16 +126,16 @@ select:focus {
 .textareas {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 1rem;
+  gap: 16px;
+  margin-bottom: 1.5rem;
 }
 
 textarea {
-  height: 180px;
-  padding: 14px;
+  height: 300px;
+  padding: 18px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 18px;
   resize: none;
   font-family: sans-serif;
   background: var(--bg-card);
@@ -157,12 +158,12 @@ textarea::placeholder {
 }
 
 .translate-btn {
-  padding: 11px 28px;
+  padding: 16px 32px;
   background: var(--btn-bg);
   color: var(--btn-color);
   border: none;
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 18px;
   cursor: pointer;
   transition: opacity 0.15s;
 }
@@ -178,7 +179,55 @@ textarea::placeholder {
 }
 
 .error {
-  font-size: 13px;
+  font-size: 15px;
   color: #cc4444;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.textarea-wrap {
+  position: relative;
+}
+
+.clear-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.clear-btn:hover {
+  background: var(--text-muted);
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.copy-btn:hover {
+  background: var(--text-muted);
 }

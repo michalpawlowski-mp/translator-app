@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { LANGUAGES } from "./constants/languages";
 import { useTranslator } from "./hooks/useTranslator";
+import TranslatorControls from "./components/TranslatorControls";
+import TranslatorTextareas from "./components/TranslatorTextareas";
 
 const App = () => {
   const [text, setText] = useState("");
@@ -42,60 +43,21 @@ const App = () => {
           {isDark ? "☀️" : "🌙"}
         </button>
       </div>
-      <div className="controls">
-        <select
-          aria-label="Język źródłowy"
-          title="Język źródłowy"
-          value={from}
-          onChange={(e) => setFrom(e.target.value)}
-        >
-          {LANGUAGES.map((l) => (
-            <option key={l.code} value={l.code}>
-              {l.label}
-            </option>
-          ))}
-        </select>
 
-        <button
-          aria-label="Zamień języki"
-          title="Zamień języki"
-          type="button"
-          className="swap-btn"
-          onClick={handleSwap}
-        >
-          ⇄
-        </button>
+      <TranslatorControls
+        from={from}
+        to={to}
+        onFromChange={setFrom}
+        onToChange={setTo}
+        onSwap={handleSwap}
+      />
 
-        <select
-          aria-label="Język docelowy"
-          title="Język docelowy"
-          value={to}
-          onChange={(e) => setTo(e.target.value)}
-        >
-          {LANGUAGES.map((l) => (
-            <option key={l.code} value={l.code}>
-              {l.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="textareas">
-        <textarea
-          aria-label="Tekst do tłumaczenia"
-          title="Tekst do tłumaczenia"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Wpisz tekst..."
-        />
-        <textarea
-          value={isLoading ? "Tłumaczenie..." : result}
-          readOnly
-          aria-label="Wynik tłumaczenia"
-          title="Wynik tłumaczenia"
-          placeholder="Tłumaczenie..."
-        />
-      </div>
+      <TranslatorTextareas
+        text={text}
+        result={result}
+        isLoading={isLoading}
+        onTextChange={setText}
+      />
 
       {error && (
         <p className="error" role="alert">
