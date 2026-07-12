@@ -30,9 +30,9 @@ const App = () => {
   });
 
   return (
-    <main className="app">
-      <div className="app-header">
-        <h1 className="app-title">Translator</h1>
+    <main>
+      <header>
+        <h1>Translator</h1>
         <button
           title="Zmiana motywu strony"
           type="button"
@@ -42,7 +42,7 @@ const App = () => {
         >
           {isDark ? "☀️" : "🌙"}
         </button>
-      </div>
+      </header>
 
       <TranslatorControls
         from={from}
