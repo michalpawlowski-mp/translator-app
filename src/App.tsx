@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useTranslator } from "./hooks/useTranslator";
+import { useTheme } from "./hooks/useTheme";
+import { useAutoTranslate } from "./hooks/useAutoTranslate";
 import TranslatorControls from "./components/TranslatorControls";
 import TranslatorTextareas from "./components/TranslatorTextareas";
 
@@ -8,26 +10,14 @@ const App = () => {
   const [from, setFrom] = useState("pl");
   const [to, setTo] = useState("en");
   const { result, isLoading, error, translate } = useTranslator();
+  const { isDark, toggleTheme } = useTheme();
+
+  useAutoTranslate(text, from, to, translate);
 
   const handleSwap = () => {
     setFrom(to);
     setTo(from);
   };
-
-  const toggleTheme = () => {
-    setIsDark((prev) => {
-      const next = !prev;
-      document.body.classList.toggle("dark", next);
-      localStorage.setItem("theme", next ? "dark" : "light");
-      return next;
-    });
-  };
-
-  const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") document.body.classList.add("dark");
-    return saved === "dark";
-  });
 
   return (
     <main>
@@ -64,15 +54,6 @@ const App = () => {
           {error}
         </p>
       )}
-
-      <button
-        type="button"
-        className="translate-btn"
-        onClick={() => translate(text, from, to)}
-        disabled={isLoading || !text.trim()}
-      >
-        Tłumacz
-      </button>
     </main>
   );
 };
