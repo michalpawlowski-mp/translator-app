@@ -9,7 +9,7 @@ const App = () => {
   const [text, setText] = useState("");
   const [from, setFrom] = useState("pl");
   const [to, setTo] = useState("en");
-  const { result, isLoading, error, translate } = useTranslator();
+  const { result, isLoading, error, translate, clearResult } = useTranslator();
   const { isDark, toggleTheme } = useTheme();
 
   useAutoTranslate(text, from, to, translate);
@@ -17,6 +17,11 @@ const App = () => {
   const handleSwap = () => {
     setFrom(to);
     setTo(from);
+  };
+
+  const handleTextChange = (value: string) => {
+    setText(value);
+    if (!value.trim()) clearResult();
   };
 
   return (
@@ -33,7 +38,6 @@ const App = () => {
           {isDark ? "☀️" : "🌙"}
         </button>
       </header>
-
       <TranslatorControls
         from={from}
         to={to}
@@ -41,14 +45,14 @@ const App = () => {
         onToChange={setTo}
         onSwap={handleSwap}
       />
-
       <TranslatorTextareas
         text={text}
         result={result}
         isLoading={isLoading}
-        onTextChange={setText}
+        onTextChange={handleTextChange}
+        from={from}
+        to={to}
       />
-
       {error && (
         <p className="error" role="alert">
           {error}

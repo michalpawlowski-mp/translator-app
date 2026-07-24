@@ -1,12 +1,5 @@
 import LanguageSelect from "./LanguageSelect";
-
-interface Props {
-  from: string;
-  to: string;
-  onFromChange: (value: string) => void;
-  onToChange: (value: string) => void;
-  onSwap: () => void;
-}
+import type { ControlsProps } from "../types/translator";
 
 const TranslatorControls = ({
   from,
@@ -14,7 +7,7 @@ const TranslatorControls = ({
   onFromChange,
   onToChange,
   onSwap,
-}: Props) => {
+}: ControlsProps) => {
   return (
     <div className="controls">
       <LanguageSelect

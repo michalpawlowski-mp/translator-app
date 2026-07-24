@@ -1,12 +1,11 @@
 import { LANGUAGES } from "../constants/languages";
+import type { LanguageSelectProps } from "../types/translator";
 
-interface Props {
-  value: string;
-  onChange: (value: string) => void;
-  ariaLabel: string;
-}
-
-const LanguageSelect = ({ value, onChange, ariaLabel }: Props) => {
+const LanguageSelect = ({
+  value,
+  onChange,
+  ariaLabel,
+}: LanguageSelectProps) => {
   return (
     <select
       aria-label={ariaLabel}

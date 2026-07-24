@@ -11,11 +11,15 @@ Prosta aplikacja do tłumaczenia tekstu między językami, zbudowana w React + T
 
 ## Funkcje
 
+- Automatyczne tłumaczenie po chwili od zaprzestania pisania (debounce)
 - Tłumaczenie tekstu między 7 językami (polski, angielski, francuski, niemiecki, hiszpański, portugalski, włoski)
 - Zamiana języków jednym kliknięciem
-- Licznik znaków
+- Odczytywanie tekstu i tłumaczenia na głos (Web Speech API)
+- Kopiowanie tłumaczenia do schowka
+- Czyszczenie pola tekstowego
+- Tryb jasny i ciemny z zapamiętaniem wyboru
+- Responsywny design — działa na mobile i desktop
 - Obsługa błędów API
-- Przycisk tłumaczenia zablokowany gdy pole jest puste lub trwa ładowanie
 
 ## Technologie
 
@@ -23,6 +27,7 @@ Prosta aplikacja do tłumaczenia tekstu między językami, zbudowana w React + T
 - TypeScript
 - Vite
 - [MyMemory API](https://mymemory.translated.net/)
+- Web Speech API
 
 ## Uruchomienie lokalne
 
